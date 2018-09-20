@@ -1,0 +1,17 @@
+name: Austin and Hayden
+title: Austin and Hayden - Wedding Site
+description: This is our wedding site. Visit here for updates and any information about our wedding!
+keywords: wedding, austin, hayden
+email: austin@austinp.com
+url: "http://austinandhayden.com"
+linkedinURL: ""
+facebookURL: ""
+# Build settings
+sass:
+  style: compressed
+  sourcemap: inline
+  # debug_info: true
+  line_numbers: true
+  line_comments: true
+plugins:
+  - jekyll-feed
