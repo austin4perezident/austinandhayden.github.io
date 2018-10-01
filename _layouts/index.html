@@ -23,21 +23,19 @@
     <div class="jumbotron">
       <div class="container text-center">
         <h1>Austin & Hayden </h1>
-
+        <div id="passwordRow" style="padding-top: 20px;" class="row">
+            <form class="form-horizontal" id="password">
+                <div class="col-sm-offset-4 col-sm-4 input-group">
+                  <input type="text" class="form-control password-text" placeholder="Invitation Code">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Submit</button>
+                  </span>
+                </div><!-- /input-group -->
+            </form>
+        </div>
+        {% include _rsvpForm.html %}
       </div>
     </div>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-8 col-md-offset-2 wrap" style="text-align: left;">
-                <h2 class="marginBottom">RSVP</h2>
-				<div>
-                    {% include _rsvpForm.html %}
-				</div>
-			</div>
-		</div>
-
-
-	</div>
 <canvas id="background-image"></canvas>
 
 <script>
@@ -101,6 +99,38 @@ $("#rsvpForm").submit(function(event){
 });
 
 </script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        var match = "hipposandsharks";
+
+        var remember = Cookies.get('remember');
+        if (remember == 'true') 
+        {
+            $('#rsvpContainer').show();
+            $('#passwordRow').hide();
+        }
+
+
+    $("#password").submit(function(e) {
+        e.preventDefault();
+        var password = $('.password-text').val().toLowerCase();
+
+        // set cookies to expire in 14 days
+        if (password == match) {
+            Cookies.set('password', password, { expires: 14 });
+            Cookies.set('remember', true, { expires: 14 });
+
+            $('#rsvpContainer').show();
+            $('#passwordRow').hide();
+            console.log("Success!");
+        } else {
+            console.log("Invalid password, please try again");
+        }
+  });
+});
+</script>
+
 
 </body>
 </html>

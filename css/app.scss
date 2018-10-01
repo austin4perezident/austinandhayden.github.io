@@ -3,6 +3,7 @@
 $blue: #2b4480;
 $black: #555;
 $white: #ffffff;
+$white-transparent: rgba(255,255,255,0.6);
 $grey: #7d7d7d;
 $light-blue: #4da8f2;
 $light-green: #79eddc;
@@ -63,12 +64,9 @@ a {
   padding: 5px;
 }
 
-.container div div {
-  background: $white;
-}
-
 .wrap {
-  background: $white;
+  background: $white-transparent;
+  color: $black !important;
   top: 2.5rem;
   padding: 25px;
   border-radius: 10px;
