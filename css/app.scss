@@ -1,7 +1,8 @@
 ---
 ---
 $blue: #2b4480;
-$white: #f5f4f0;
+$black: #555;
+$white: #ffffff;
 $grey: #7d7d7d;
 $light-blue: #4da8f2;
 $light-green: #79eddc;
@@ -15,6 +16,17 @@ $github: #4078c0;
 body {
   background: linear-gradient(to bottom right, $blue, $light-blue);
   font-family: 'Roboto', sans-serif;
+}
+
+@font-face {
+  font-family: "Woodlands";
+  src: url("../assets/fonts/TheWoodlands-Regular.ttf");
+}
+
+h1 {
+  color: $black !important;
+  font-size: 100px !important;
+  font-family: "Woodlands";
 }
 
 a {
@@ -56,6 +68,7 @@ a {
 }
 
 .wrap {
+  background: $white;
   top: 2.5rem;
   padding: 25px;
   border-radius: 10px;
@@ -72,7 +85,7 @@ a {
 }
 
 .text-blue {
-  color: $light-blue;
+  color: $light-blue !important;
   font-weight: 300;
 }
 
@@ -122,3 +135,23 @@ a {
   }
 }
 
+.jumbotron {
+  background-image: url("../assets/images/ah_1.jpg");
+  color: white;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.marginBottom {
+  margin-bottom: 25px;
+}
+
+.form-horizontal .control-label{
+    text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}

@@ -4,10 +4,10 @@
 <script type="text/javascript">
 
     // Insert current year for Copyright
-    $(function(){
-        var theYear = new Date().getFullYear();
-        document.getElementById("year").innerHTML = theYear;
-    });
+    // $(function(){
+    //     var theYear = new Date().getFullYear();
+    //     document.getElementById("year").innerHTML = theYear;
+    // });
 
 	/**
      * Light layer on top of a canvas element to represent an image displayed
@@ -56,7 +56,7 @@
      * Initialise an image on the page and blur it.
      */
     window.onload = function() {
-        var url = '../assets/images/bg_{number}.jpg'.replace('{number}', parseInt(Math.floor(Math.random() * 6) + 1)),
+        var url = '../assets/images/bg_1.jpg', // .replace('{number}', parseInt(Math.floor(Math.random() * 6) + 1)),
             image,
             canvasImage;
 

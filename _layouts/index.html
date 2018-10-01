@@ -19,38 +19,22 @@
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7BSRV4"
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
+
+    <div class="jumbotron">
+      <div class="container text-center">
+        <h1>Austin & Hayden </h1>
+
+      </div>
+    </div>
 	<div class="container">
-
 		<div class="row">
-			<div class="col-md-8 col-md-offset-2 text-center wrap">
-				<div style="background-color: white; margin-top: 50px;">
-					<form id="foo">
-					    <label for="bar">Name</label>
-					    <input id="bar" name="name" type="text" value="" />
-
-					    <label for="bar">Email</label>
-					    <input id="bar" name="email" type="text" value="" />
-
-					    <label for="bar">Number of Guests</label>
-					    <input id="bar" name="guestNumber" type="text" value="" />
-
-					    <!-- Reception and/or Ceremony -->
-					    <label for="bar">RSVP For</label>
-					    <input id="bar" name="RsvpFor" type="text" value="" /> 
-
-					    <label for="bar">Comments</label>
-					    <input id="bar" name="comment" type="text" value="" />
-
-					    <!-- link to registry -->
-					    <!-- <label for="bar">Registry</label>
-					    <input id="bar" name="registry" type="text" value="" /> -->
-
-					    <input type="submit" value="Send" />
-					</form>
+			<div class="col-md-8 col-md-offset-2 wrap" style="text-align: left;">
+                <h2 class="marginBottom">RSVP</h2>
+				<div>
+                    {% include _rsvpForm.html %}
 				</div>
 			</div>
 		</div>
-		{% include _footer.html %}
 
 
 	</div>
@@ -62,7 +46,7 @@
 var request;
 
 // Bind to the submit event of our form
-$("#foo").submit(function(event){
+$("#rsvpForm").submit(function(event){
 
     // Prevent default posting of form - put here to work in case of errors
     event.preventDefault();
