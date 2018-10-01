@@ -23,14 +23,21 @@
     <div class="jumbotron">
       <div class="container text-center">
         <h1>Austin & Hayden </h1>
-        <div id="passwordRow" style="padding-top: 20px;" class="row">
-            <form class="form-horizontal" id="password">
-                <div class="col-sm-offset-4 col-sm-4 input-group">
+        <div id="passwordRow" style="padding-top: 20px;" class="row col-sm-offset-4 col-sm-4">
+            <form class="form-inline" id="password">
+                <div class="input-group">
                   <input type="text" class="form-control password-text" placeholder="Invitation Code">
                   <span class="input-group-btn">
                     <button class="btn btn-default" type="button">Submit</button>
                   </span>
                 </div><!-- /input-group -->
+                <div style="top:5px;" class="input-group">
+                    <ul class="list-inline">
+                    <li><a style="color: #555;" href="#" title="Info" data-toggle="popover" data-placement="right" data-content="Invitation code can be found on your invitation card">
+                        <span class="glyphicon glyphicon-info-sign"></span>
+                    </a></li>
+                </ul>
+            </div>
             </form>
         </div>
         {% include _rsvpForm.html %}
@@ -101,6 +108,8 @@ $("#rsvpForm").submit(function(event){
 </script>
 <script type="text/javascript">
     $(document).ready(function() {
+
+        $('[data-toggle="popover"]').popover();   
 
         var match = "hipposandsharks";
 
