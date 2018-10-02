@@ -79,10 +79,6 @@ a {
   }
 }
 
-.jumbotron {
-  max-height: 80vh;
-}
-
 .contact {
   color: $grey;
   text-transform: uppercase;
@@ -160,13 +156,24 @@ a {
   }
 }
 
-.jumbotron {
+.jumbotron-main {
   background-image: url("../assets/images/ah_1.jpg");
   color: white;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+  max-height: 80vh;
+}
+
+.jumbotron-registry {
+  background-image: url("../assets/images/ah_2.jpg");
+  color: white;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  min-height: 300px;
 }
 
 .marginBottom {
