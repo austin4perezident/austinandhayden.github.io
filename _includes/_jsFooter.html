@@ -122,14 +122,18 @@ $("#rsvpForm").submit(function(event){
       var distance = countDownDate - now;
 
       // Time calculations for days, hours, minutes and seconds
-      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      var days = Math.floor(parseFloat(distance / (1000 * 60 * 60 * 24)));
+      var hours = Math.floor(parseFloat((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+      var minutes = Math.floor(parseFloat((distance % (1000 * 60 * 60)) / (1000 * 60)));
+      var seconds = Math.floor(parseFloat((distance % (1000 * 60)) / 1000));
 
       // Display the result in the element with id="demo"
-      document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+      if (isNaN(days) || isNaN(hours) || isNaN(minutes) || isNaN(seconds)) {
+        document.getElementById("timer").innerHTML = "December 1st, 2018";
+      } else {
+        document.getElementById("timer").innerHTML = days + "d " + hours + "h "
       + minutes + "m " + seconds + "s ";
+      }
 
       // If the count down is finished, write some text 
       if (distance < 0) {
@@ -151,7 +155,7 @@ $("#rsvpForm").submit(function(event){
       // Ceremony
       var ceremony = {lat: 33.5519552, lng: -117.13690759999997};
       var mapCeremony = new google.maps.Map(
-          document.getElementById('mapCeremony'), {zoom: 13, center: ceremony});
+          document.getElementById('mapCeremony'), {zoom: 15, center: ceremony});
       var marker = new google.maps.Marker({position: ceremony, map: mapCeremony});
     }
 </script>
