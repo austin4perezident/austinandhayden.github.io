@@ -142,13 +142,17 @@ $("#rsvpForm").submit(function(event){
 <!-- Google Maps -->
 <script type="text/javascript">
     function initMap() {
-      // The location of Uluru
-      var uluru = {lat: -25.344, lng: 131.036};
-      // The map, centered at Uluru
-      var map = new google.maps.Map(
-          document.getElementById('map'), {zoom: 4, center: uluru});
-      // The marker, positioned at Uluru
-      var marker = new google.maps.Marker({position: uluru, map: map});
+      // Reception
+      var reception = {lat: 33.5798199, lng: -116.99487679999999};
+      var mapReception = new google.maps.Map(
+          document.getElementById('mapReception'), {zoom: 13, center: reception});
+      var marker = new google.maps.Marker({position: reception, map: mapReception});
+
+      // Ceremony
+      var ceremony = {lat: 33.5519552, lng: -117.13690759999997};
+      var mapCeremony = new google.maps.Map(
+          document.getElementById('mapCeremony'), {zoom: 13, center: ceremony});
+      var marker = new google.maps.Marker({position: ceremony, map: mapCeremony});
     }
 </script>
 <script async defer
