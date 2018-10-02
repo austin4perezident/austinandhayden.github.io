@@ -34,151 +34,33 @@
             <!-- RSVP form -->
             {% include _rsvpForm.html %}
 
-            <div class="jumbotron jumbotron-registry">
+            <div class="jumbotron jumbotron-registry" hidden>
               <div class="container text-center">
+                <h2 class="header-registry" style="margin-top: 0;">
+                    Registry
+                </h2>
+                <div class="row">
+                    <div class="col-md-4 text-center" style="padding-bottom: 15px;display: inline-block;">
+                        <div class="registry-box">
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="padding-bottom: 15px;display: inline-block;">
+                        <div class="registry-box">
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="display: inline-block;">
+                        <div class="registry-box">
+                        </div>
+                    </div>
+                </div>
               </div>
             </div>
+
+            <!-- Maps and Directions form -->
+            {% include _directions.html %}
         </div>
     </div>
     {% include _footer.html %}
-
-<script>
-
-	// Variable to hold request
-var request;
-
-// Bind to the submit event of our form
-$("#rsvpForm").submit(function(event){
-
-    // Prevent default posting of form - put here to work in case of errors
-    event.preventDefault();
-
-    // Abort any pending request
-    if (request) {
-        request.abort();
-    }
-    // setup some local variables
-    var $form = $(this);
-
-    // Let's select and cache all the fields
-    var $inputs = $form.find("input, select, button, textarea");
-
-    // Serialize the data in the form
-    var serializedData = $form.serialize();
-
-    // Let's disable the inputs for the duration of the Ajax request.
-    // Note: we disable elements AFTER the form data has been serialized.
-    // Disabled form elements will not be serialized.
-    $inputs.prop("disabled", true);
-
-    // Fire off the request to /form.php
-    request = $.ajax({
-        url: "https://script.google.com/macros/s/AKfycbwsvL22-vP8qMUCSOGSSpB_PNqcvaIncgel-lFb7uOp9i9YjcsO/exec",
-        type: "post",
-        data: serializedData
-    });
-
-    // Callback handler that will be called on success
-    request.done(function (response, textStatus, jqXHR){
-        // Log a message to the console
-        console.log("Hooray, it worked!");
-        Cookies.set('rsvp', true, { expires: 365 });
-        $('#rsvpContainer').hide();
-    });
-
-    // Callback handler that will be called on failure
-    request.fail(function (jqXHR, textStatus, errorThrown){
-        // Log the error to the console
-        console.error(
-            "The following error occurred: "+
-            textStatus, errorThrown
-        );
-    });
-
-    // Callback handler that will be called regardless
-    // if the request failed or succeeded
-    request.always(function () {
-        // Reenable the inputs
-        $inputs.prop("disabled", false);
-    });
-
-});
-
-</script>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-
-        $('[data-toggle="popover"]').popover();   
-
-        var match = "hipposandsharks";
-        var remember = Cookies.get('remember');
-        var rsvp = Cookies.get('rsvp');
-        var siteTitle = '{{ site.password }}';
-
-        if (remember == 'true') 
-        {
-            $('#rsvpContainer').show();
-            $('#passwordRow').hide();
-        }
-
-        if (rsvp == 'true') {
-            $('#rsvpContainer').hide();
-        }
-
-
-    $("#password").submit(function(e) {
-        e.preventDefault();
-        var password = $('.password-text').val().toLowerCase();
-
-        // set cookies to expire in 14 days
-        if (password == match) {
-            Cookies.set('password', password, { expires: 14 });
-            Cookies.set('remember', true, { expires: 14 });
-
-            $('#rsvpContainer').show();
-            $('#passwordRow').hide();
-            console.log("Success!");
-        } else {
-            console.log("Invalid password, please try again");
-        }
-  });
-});
-</script>
-
-<script type="text/javascript">
-    // Countdown Timer for RSVP
-
-    // Set the date we're counting down to
-    var countDownDate = new Date("Dec 1, 2018 23:59:99").getTime();
-
-    // Update the count down every 1 second
-    var x = setInterval(function() {
-
-      // Get todays date and time
-      var now = new Date().getTime();
-
-      // Find the distance between now and the count down date
-      var distance = countDownDate - now;
-
-      // Time calculations for days, hours, minutes and seconds
-      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      // Display the result in the element with id="demo"
-      document.getElementById("timer").innerHTML = days + "d " + hours + "h "
-      + minutes + "m " + seconds + "s ";
-
-      // If the count down is finished, write some text 
-      if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("timer").innerHTML = "EXPIRED";
-      }
-    }, 1000);
-</script>
-
-
+    {% include _jsFooter.html %}
 </body>
 </html>
