@@ -26,6 +26,17 @@ html, body {
   overflow:auto;
   padding-bottom:150px; /* this needs to be bigger than footer height*/
 }
+@media (max-width: 992px) {
+  #main {
+    padding-bottom: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  #main {
+    padding-bottom: 350px;
+  }
+}
 
 .footer {
   position: relative;
