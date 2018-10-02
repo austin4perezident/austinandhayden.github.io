@@ -26,17 +26,6 @@ html, body {
   overflow:auto;
   padding-bottom:150px; /* this needs to be bigger than footer height*/
 }
-@media (max-width: 992px) {
-  #main {
-    padding-bottom: 250px;
-  }
-}
-
-@media (max-width: 768px) {
-  #main {
-    padding-bottom: 350px;
-  }
-}
 
 .footer {
   position: relative;
@@ -45,6 +34,7 @@ html, body {
   clear:both;
   padding-top:20px;
   background: $white;
+  border-top: 1px solid #eee;
 } 
 
 body {
@@ -87,6 +77,10 @@ a {
   &.github {
     color: $github;
   }
+}
+
+.jumbotron {
+  max-height: 80vh;
 }
 
 .contact {
@@ -197,4 +191,8 @@ a {
 
 .popover {
   min-width: 250px;
+}
+
+#rsvpContainer {
+  padding-bottom: 60px;
 }
