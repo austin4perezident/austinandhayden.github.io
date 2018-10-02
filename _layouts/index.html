@@ -6,44 +6,36 @@
   {% include _css.html %}
   {% include _js.html %}
 
-	<!-- Google Tag Manager -->
-	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-W7BSRV4');</script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-W7BSRV4');</script>
 </head>
 
 <body data-spy="scroll" data-offset="51">
-	<!-- Google Tag Manager (noscript) -->
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7BSRV4"
-	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-	<!-- End Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7BSRV4"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="wrapper">
+        <div id="main" class="clear-top">
+            <div class="jumbotron">
+              <div class="container text-center">
+                <h1>
+                    Austin & Hayden
+                </h1>
+                <!-- Password to enter into site -->
+                {% include _password.html %}
 
-    <div class="jumbotron">
-      <div class="container text-center">
-        <h1>Austin & Hayden </h1>
-        <div id="passwordRow" style="padding-top: 20px;" class="row col-sm-offset-4 col-sm-4">
-            <form class="form-inline" id="password">
-                <div class="input-group">
-                  <input type="text" class="form-control password-text" placeholder="Invitation Code">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Submit</button>
-                  </span>
-                </div><!-- /input-group -->
-                <div style="top:5px;" class="input-group">
-                    <ul class="list-inline">
-                    <li><a style="color: #555;" href="#" title="Info" data-toggle="popover" data-placement="right" data-content="Invitation code can be found on your invitation card">
-                        <span class="glyphicon glyphicon-info-sign"></span>
-                    </a></li>
-                </ul>
+                <!-- RSVP form -->
+                {% include _rsvpForm.html %}
+              </div>
             </div>
-            </form>
         </div>
-        {% include _rsvpForm.html %}
-      </div>
     </div>
-<canvas id="background-image"></canvas>
+    {% include _footer.html %}
 
 <script>
 
@@ -85,6 +77,8 @@ $("#rsvpForm").submit(function(event){
     request.done(function (response, textStatus, jqXHR){
         // Log a message to the console
         console.log("Hooray, it worked!");
+        Cookies.set('rsvp', true, { expires: 365 });
+        $('#rsvpContainer').hide();
     });
 
     // Callback handler that will be called on failure
@@ -106,18 +100,25 @@ $("#rsvpForm").submit(function(event){
 });
 
 </script>
+
 <script type="text/javascript">
     $(document).ready(function() {
 
         $('[data-toggle="popover"]').popover();   
 
         var match = "hipposandsharks";
-
         var remember = Cookies.get('remember');
+        var rsvp = Cookies.get('rsvp');
+        var siteTitle = '{{ site.password }}';
+
         if (remember == 'true') 
         {
             $('#rsvpContainer').show();
             $('#passwordRow').hide();
+        }
+
+        if (rsvp == 'true') {
+            $('#rsvpContainer').hide();
         }
 
 
@@ -138,6 +139,39 @@ $("#rsvpForm").submit(function(event){
         }
   });
 });
+</script>
+
+<script type="text/javascript">
+    // Countdown Timer for RSVP
+
+    // Set the date we're counting down to
+    var countDownDate = new Date("Dec 1, 2018 23:59:99").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+      // Get todays date and time
+      var now = new Date().getTime();
+
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now;
+
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the result in the element with id="demo"
+      document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+      + minutes + "m " + seconds + "s ";
+
+      // If the count down is finished, write some text 
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("timer").innerHTML = "EXPIRED";
+      }
+    }, 1000);
 </script>
 
 
