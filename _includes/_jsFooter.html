@@ -18,8 +18,7 @@
               digits: true
             },
             message: {
-                minlength: 2,
-                required: true
+                minlength: 15
             }
         },
         highlight: function (element) {
@@ -128,8 +127,8 @@ $("#rsvpForm").submit(function(event){
 
         // set cookies to expire in 14 days
         if (password == match) {
-            Cookies.set('password', password, { expires: 14 });
-            Cookies.set('remember', true, { expires: 14 });
+            Cookies.set('password', password, { expires: 365 });
+            Cookies.set('remember', true, { expires: 365 });
 
             $('.jumbotron-registry').show();
             $('#rsvpContainer').show();
@@ -178,6 +177,7 @@ $("#rsvpForm").submit(function(event){
       // If the count down is finished, write some text 
       if (distance < 0) {
         clearInterval(x);
+        $('#rsvpContainer').hide();
         document.getElementById("timer").innerHTML = "EXPIRED";
       }
     }, 1000);
@@ -201,4 +201,16 @@ $("#rsvpForm").submit(function(event){
 </script>
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3AQfOni2-AtodQefpy8g1nNtqWs18nSE&callback=initMap">
+</script>
+
+<script type="text/javascript">
+  function isiPhone(){
+    return (
+        (navigator.platform.indexOf("iPhone") != -1) ||
+        (navigator.platform.indexOf("iPod") != -1)
+    );
+  }
+  if(isiPhone()){
+     alert('iPhone detected');
+  }
 </script>
