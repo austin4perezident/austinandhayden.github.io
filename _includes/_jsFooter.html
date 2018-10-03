@@ -211,16 +211,25 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3AQfOni2-AtodQefpy8g1nNt
     );
   }
   if(isiPhone()){
-     $('#ceremony-address').innerHTML(
+     document.getElementById('ceremony-address').innerHTML =
       '<a href="http://maps.apple.com/?q=33.5519552,-117.13690759999997">' +
       '39022 Sky Canyon Dr. <br>' +
       'Murrieta, CA 92563' +
-      '</a>')
+      '</a>';
 
-     $('#reception-address').innerHTML(
+     document.getElementById('reception-address').innerHTML =
       '<a href="http://maps.apple.com/?q=33.5798199,-116.99487679999999">' +
       '37635 Remuda Dr. <br>' +
       'Temecula, CA 92592' +
-      '</a>');
+      '</a>';
+  } else {
+     document.getElementById('ceremony-address').innerHTML =
+      '39022 Sky Canyon Dr. <br>' +
+      'Murrieta, CA 92563';
+
+     document.getElementById('reception-address').innerHTML =
+      '37635 Remuda Dr. <br>' +
+      'Temecula, CA 92592';
+
   }
 </script>
