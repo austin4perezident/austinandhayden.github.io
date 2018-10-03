@@ -211,6 +211,12 @@ a {
   max-height: 80vh;
 }
 
+@media (max-width: 992px) {
+  .jumbotron-main {
+    background-image: url("../assets/images/ah_1_mobile.jpg");
+  }
+}
+
 .jumbotron-registry {
   background-image: url("../assets/images/ah_2.jpg");
   color: white;
