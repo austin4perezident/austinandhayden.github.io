@@ -127,7 +127,7 @@ $("#rsvpForm").submit(function(event){
 
     $("#password").submit(function(e) {
         e.preventDefault();
-        var password = $('.password-text').val().toLowerCase();
+        var password = $('.password-text').val().toLowerCase().match(/\b(\w+)\b/g).join('');
 
         // set cookies to expire in 14 days
         if (password == match) {
