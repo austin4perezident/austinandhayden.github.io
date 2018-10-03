@@ -138,7 +138,9 @@ $("#rsvpForm").submit(function(event){
             $('.jumbotron-main').css({'background-image':'url("../assets/images/ah_3.jpg")'});
             console.log("Success!");
         } else {
-            console.log("Invalid password, please try again");
+            $('#password').addClass('has-error');
+            // $('#password').closest('.input-group').append('<div>Invalid Password</div>');
+            console.log("Invalid code, please try again");
         }
   });
 });
