@@ -78,6 +78,7 @@ $("#rsvpForm").submit(function(event){
             $('.jumbotron-registry').show();
             $('#directions').show();
             $('#passwordRow').hide();
+            $('.jumbotron-main').css({'background-image':'url("../assets/images/ah_3.jpg")'});
         }
 
         if (rsvp == 'true') {
@@ -98,6 +99,7 @@ $("#rsvpForm").submit(function(event){
             $('#rsvpContainer').show();
             $('#directions').show();
             $('#passwordRow').hide();
+            $('.jumbotron-main').css({'background-image':'url("../assets/images/ah_3.jpg")'});
             console.log("Success!");
         } else {
             console.log("Invalid password, please try again");
