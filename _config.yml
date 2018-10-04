@@ -14,5 +14,21 @@ sass:
   # debug_info: true
   line_numbers: true
   line_comments: true
-plugins:
-  - jekyll-feed
+#plugins:
+#  - jekyll-feed
+
+compress_html:
+  clippings: all
+  comments: [""]
+  endings: [html, head, body, li, dt, dd, rt, rp, optgroup, option, colgroup, caption, thead, tbody, tfoot, tr, td, th]
+  profile: false
+  blanklines: false
+  ignore:
+    envs: []
+
+exclude: ["_assets",
+          "Gemfile",
+          "Gemfile.lock",
+          "gulpfile.js",
+          "node_modules",
+          "package.json"]
