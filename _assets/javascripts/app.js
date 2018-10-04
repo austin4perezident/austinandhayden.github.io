@@ -132,7 +132,6 @@ $("#rsvpForm").submit(function(event){
 
       // set cookies to expire in 14 days
       if (password == match) {
-          Cookies.set('password', password, { expires: 365 });
           Cookies.set('remember', true, { expires: 365 });
 
           $('.jumbotron-registry').show();
