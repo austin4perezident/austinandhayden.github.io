@@ -18,6 +18,7 @@ var run          = require('gulp-run');
 var runSequence  = require('run-sequence').use(gulp);
 var sass         = require('gulp-ruby-sass');
 var uglify       = require('gulp-uglify');
+var stripDebug   = require('gulp-strip-debug');
 
 // Include paths file.
 var paths = require('./_assets/gulp_config/paths');
@@ -74,6 +75,7 @@ gulp.task('build:scripts', function() {
          paths.jsFiles + '/lib' + '/js.cookie.min.js',
          paths.jsFiles + '/*.js'
      ])
+         .pipe(stripDebug())
          .pipe(concat('app.js'))
          .pipe(uglify())
          .pipe(gulp.dest(paths.jekyllJsFiles))

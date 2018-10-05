@@ -73,8 +73,6 @@ $("#rsvpForm").submit(function(event){
 
     // Callback handler that will be called on success
     request.done(function (response, textStatus, jqXHR){
-        // Log a message to the console
-        console.log("Hooray, it worked!");
         Cookies.set('rsvp', true, { expires: 365 });
         $('#rsvpContainer').hide();
         $('#rsvpSuccess').show();
@@ -140,12 +138,9 @@ $("#rsvpForm").submit(function(event){
           $('#passwordRow').hide();
           $('#invalidCode').hide();
           $('.jumbotron-main').css({'background-image':'url("../assets/images/ah_3.jpg")'});
-          console.log("Success!");
       } else {
           $('#password').addClass('has-error');
           $('#invalidCode').show();
-          // $('#password').closest('.input-group').append('<div>Invalid Password</div>');
-          console.log("Invalid code, please try again");
       };
 });
 });
