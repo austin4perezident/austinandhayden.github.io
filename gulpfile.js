@@ -23,6 +23,20 @@ var uglify       = require('gulp-uglify');
 var paths = require('./_assets/gulp_config/paths');
 
 // Processes SCSS.
+
+// Processes critical CSS, to be included in head.html.
+gulp.task('build:styles:critical', function() {
+    return sass(paths.sassFiles + '/critical.scss', {
+        style: 'compressed',
+        trace: true,
+        loadPath: [paths.sassFiles]
+    }).pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
+        .pipe(cleancss())
+        .pipe(gulp.dest('_includes'))
+        .on('error', gutil.log);
+});
+
+// Processes remaining CSS
 gulp.task('build:styles:main', function() {
   // Compile SCSS, run autoprefixer, and minify CSS.
   return sass(paths.sassFiles + '/app.scss', {
@@ -38,12 +52,13 @@ gulp.task('build:styles:main', function() {
 });
 
 // Builds all styles.
-gulp.task('build:styles', ['build:styles:main']);
+gulp.task('build:styles', ['build:styles:main', 'build:styles:critical']);
 
 // Deletes CSS.
 gulp.task('clean:styles', function(callback) {
     del([paths.jekyllCssFiles + 'app.css',
-        paths.siteCssFiles + 'app.css'
+        paths.siteCssFiles + 'app.css',
+        '_includes/critical.css'
     ]);
     callback();
 });
