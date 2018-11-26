@@ -177,7 +177,7 @@ $("#rsvpForm").submit(function(event){
     if (distance < 0) {
       clearInterval(x);
       $('#rsvpContainer').hide();
-      document.getElementById("timer").innerHTML = "EXPIRED";
+      document.getElementById("timer").innerHTML = "Deadline to RSVP was December 1st. If you still have not RSVP'd, please do so now so we can reserve your seat. Thanks!";
     };
   }, 1000);
 
