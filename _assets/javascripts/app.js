@@ -176,8 +176,8 @@ $("#rsvpForm").submit(function(event){
     // If the count down is finished, write some text 
     if (distance < 0) {
       clearInterval(x);
-      $('#rsvpContainer').hide();
-      document.getElementById("timer").innerHTML = "Deadline to RSVP was December 1st. If you still have not RSVP'd, please do so now so we can reserve your seat. Thanks!";
+      //$('#rsvpContainer').hide();
+      document.getElementById("timer").innerHTML = "Deadline to RSVP was <strong>December 1st</strong>. If you have not RSVP'd, please do so now so we can reserve your seat. Thank you! <br> -Austin & Hayden";
     };
   }, 1000);
 
