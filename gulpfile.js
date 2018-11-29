@@ -75,9 +75,9 @@ gulp.task('build:scripts', function() {
          paths.jsFiles + '/lib' + '/js.cookie.min.js',
          paths.jsFiles + '/*.js'
      ])
-         //.pipe(stripDebug())
+         .pipe(stripDebug())
          .pipe(concat('app.js'))
-         //.pipe(uglify())
+         .pipe(uglify())
          .pipe(gulp.dest(paths.jekyllJsFiles))
          .pipe(gulp.dest(paths.siteJsFiles))
          .on('error', gutil.log);
