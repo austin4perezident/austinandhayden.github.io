@@ -1,8 +1,5 @@
 // Insert current year for Copyright
-$(function(){
-    var theYear = new Date().getFullYear();
-    document.getElementById("year").innerHTML = theYear;
-});
+$('#year').html(new Date().getFullYear());
 
 $('#rsvpForm').validate({
       rules: {
@@ -68,13 +65,28 @@ $("#rsvpForm").submit(function(event){
     request = $.ajax({
         url: "https://script.google.com/macros/s/AKfycbwsvL22-vP8qMUCSOGSSpB_PNqcvaIncgel-lFb7uOp9i9YjcsO/exec",
         type: "post",
-        data: serializedData
+        data: serializedData,
+        inputData: $inputs
     });
 
     // Callback handler that will be called on success
     request.done(function (response, textStatus, jqXHR){
         Cookies.set('rsvp', true, { expires: 365 });
         $('#rsvpContainer').hide();
+
+        if (this.inputData[2].value == "Can't Attend") {
+          $('#rsvpSuccess').html(
+            '<span style="font-size: 24px; color: #555; font-weight: 200;">' +
+              '<span>Your RSVP has been submitted! <br><span style="font-size:20px;">We will miss seeing you! <span>&#x1F62D;</span> If anything changes, feel free to send us an email: austin@austinp.com</span></span>' +
+            '</span>'
+            );
+        } else {
+          $('#rsvpSuccess').html(
+            '<span style="font-size: 24px; color: #555; font-weight: 200;">' +
+              '<span>Your RSVP has been submitted! <br><span style="font-size:20px;">We are beyond excited to see you! <span>&#x1F604;</span></span></span>' +
+            '</span>'
+            );
+        }
         $('#rsvpSuccess').show();
 
     });

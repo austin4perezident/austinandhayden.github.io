@@ -75,9 +75,9 @@ gulp.task('build:scripts', function() {
          paths.jsFiles + '/lib' + '/js.cookie.min.js',
          paths.jsFiles + '/*.js'
      ])
-         .pipe(stripDebug())
+         //.pipe(stripDebug())
          .pipe(concat('app.js'))
-         .pipe(uglify())
+         //.pipe(uglify())
          .pipe(gulp.dest(paths.jekyllJsFiles))
          .pipe(gulp.dest(paths.siteJsFiles))
          .on('error', gutil.log);
@@ -144,6 +144,16 @@ gulp.task('build:jekyll', function() {
         .on('error', gutil.log);
 });
 
+// Starts jekyll build command.
+gulp.task('build:startjekyll', function() {
+  // Run bundle exec jekyll build with appropriate config file.
+  var shellCommand = 'bundle exec jekyll serve';
+
+    return gulp.src('')
+        .pipe(run(shellCommand))
+        .on('error', gutil.log);
+});
+
 // Deletes the entire _site directory.
 gulp.task('clean:jekyll', function(callback) {
     del(['_site']);
@@ -162,8 +172,8 @@ gulp.task('clean', ['clean:jekyll',
 gulp.task('build', function(callback) {
   // Run all build tasks.
   runSequence('clean',
-        ['build:scripts', 'build:styles', 'build:fonts', 'build:images'],
-        'build:jekyll',
+        'build:scripts', 'build:styles', 'build:fonts', 'build:images',
+        'build:jekyll', 'build:startjekyll',
         callback);
 });
 
